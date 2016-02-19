@@ -5,24 +5,25 @@ def menu
   puts
 end
 
-def quit()
-  if ['q'].include?()
+def quit
+  if ['q'].include?(@out)
     puts 'Peace'
     exit
   end
 end
 
 def clear
-  puts 'Clear'
-  exit
+  if ['c'].include?(@out)
+    puts 'Clear'
+    exit
+  end
 end
 
 def input_1
   puts 'Enter First Number:'
   print '=> '
   num_1 = gets.strip.downcase
-  quit
-  clear
+  @out = num_1
 end
 
 def input_2
@@ -31,6 +32,7 @@ def input_2
   operator = gets.strip.downcase
   if ['+', '-', '*', '/'].include?(operator)
     puts "-> #{operator}"
+    @out = operator
   else
     puts "Invalid operator!"
   end
@@ -42,6 +44,7 @@ def input_3
   num_2 = gets.strip.split('')
   num_2.each do |i|
     puts "-> #{i}"
+    @out_3 = num_2
   end
 end
 
